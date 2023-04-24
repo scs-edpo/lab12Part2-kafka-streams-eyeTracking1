@@ -1,0 +1,28 @@
+{
+    "namespace": "magicalpipelines.model",
+    "name": "EntityGaze",
+    "type": "record",
+    "fields": [
+      {
+        "name": "Timestamp",
+        "type": "long"
+      },
+      {
+        "name": "Xpos",
+        "type": "double"
+      },
+      {
+        "name": "Ypos",
+        "type": "double"
+      },
+      {
+        "name": "PupilSize",
+        "type": "double"
+      },
+      {
+        "name": "AOI",
+        "type": "string"
+      }
+    ]
+  }
+  
