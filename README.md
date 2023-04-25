@@ -41,15 +41,15 @@ The steps of the topology (2-5) are illustrated in the following [PDF file](doc/
 3. **Event Filtering**: The event filtering step removes gazes with invalid gaze or pupil size data by checking the `ValidGazeLeft`, `ValidGazeRight`, `ValidPupilSizeLeft`, and `ValidPupilSizeRight` fields. The resulting stream is called `eventFilteredGazes`.
 
 4. **Event Translation**: In this step, gaze data is transformed by:
-    - Calculating the average x and y positions based on the left and right gaze points.
-    - Calculating the average pupil size based on the left and right pupil sizes.
-    - Determining the Area of Interest (AOI) using the `Utils.findAOI()` method.
+    - Calculating the average x and y gaze positions based on the left and right gaze points using the `calculateAverageLeftRightReading(double leftValue, double rightValue)` method in [Processor](/src/main/java/magicalpipelines/gazeprocessing/Processor.java).
+    - Calculating the average pupil size based on the left and right pupil sizes using the `calculateAverageLeftRightReading(double leftValue, double rightValue)` method in [Processor](/src/main/java/magicalpipelines/gazeprocessing/Processor.java).
+    - Determining the Area of Interest (AOI) using the `findAOI(double xPos, double yPos)` method in [Processor](/src/main/java/magicalpipelines/gazeprocessing/Processor.java).
 
-   The new stream with these computed fields is called `eventTranslatedGazes`.
+   The new stream with these computed attributes is called `eventTranslatedGazes`.
 
 5. **Event Routing**: This step simulates the division of gaze data into two branches based on pupil size. Gazes with a pupil size below the `pupilSizeThreshold` are assumed to reflect low cognitive load, while those with a pupil size equal to or above the threshold are assumed to reflect high cognitive load.
 
-6. **Data Processing**:  `languageClient.getEntityGaze()` transforms Gaze object to EntityGaze object to allow the Avro serialization
+6. **Object Transformation**:  transform Gaze objects to AvroGaze objects to allow the Avro serialization
 
 7. **Key Selection**: A new key is created for each processed gaze event based on the routing condition in Step 5 (low or high cognitive load).
 

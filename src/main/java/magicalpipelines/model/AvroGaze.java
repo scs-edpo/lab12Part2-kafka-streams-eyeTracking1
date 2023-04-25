@@ -12,23 +12,23 @@ import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
-public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -4600662409374154843L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EntityGaze\",\"namespace\":\"magicalpipelines.model\",\"fields\":[{\"name\":\"Timestamp\",\"type\":\"long\"},{\"name\":\"Xpos\",\"type\":\"double\"},{\"name\":\"Ypos\",\"type\":\"double\"},{\"name\":\"PupilSize\",\"type\":\"double\"},{\"name\":\"AOI\",\"type\":\"string\"}]}");
+public class AvroGaze extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 6854292448439679298L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AvroGaze\",\"namespace\":\"magicalpipelines.model\",\"fields\":[{\"name\":\"Timestamp\",\"type\":\"long\"},{\"name\":\"Xpos\",\"type\":\"double\"},{\"name\":\"Ypos\",\"type\":\"double\"},{\"name\":\"PupilSize\",\"type\":\"double\"},{\"name\":\"AOI\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<EntityGaze> ENCODER =
-      new BinaryMessageEncoder<EntityGaze>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<AvroGaze> ENCODER =
+      new BinaryMessageEncoder<AvroGaze>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<EntityGaze> DECODER =
-      new BinaryMessageDecoder<EntityGaze>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<AvroGaze> DECODER =
+      new BinaryMessageDecoder<AvroGaze>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageDecoder instance used by this class.
    */
-  public static BinaryMessageDecoder<EntityGaze> getDecoder() {
+  public static BinaryMessageDecoder<AvroGaze> getDecoder() {
     return DECODER;
   }
 
@@ -36,17 +36,17 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    */
-  public static BinaryMessageDecoder<EntityGaze> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<EntityGaze>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<AvroGaze> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<AvroGaze>(MODEL$, SCHEMA$, resolver);
   }
 
-  /** Serializes this EntityGaze to a ByteBuffer. */
+  /** Serializes this AvroGaze to a ByteBuffer. */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /** Deserializes a EntityGaze from a ByteBuffer. */
-  public static EntityGaze fromByteBuffer(
+  /** Deserializes a AvroGaze from a ByteBuffer. */
+  public static AvroGaze fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -62,7 +62,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public EntityGaze() {}
+  public AvroGaze() {}
 
   /**
    * All-args constructor.
@@ -72,7 +72,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
    * @param PupilSize The new value for PupilSize
    * @param AOI The new value for AOI
    */
-  public EntityGaze(java.lang.Long Timestamp, java.lang.Double Xpos, java.lang.Double Ypos, java.lang.Double PupilSize, java.lang.CharSequence AOI) {
+  public AvroGaze(java.lang.Long Timestamp, java.lang.Double Xpos, java.lang.Double Ypos, java.lang.Double PupilSize, java.lang.CharSequence AOI) {
     this.Timestamp = Timestamp;
     this.Xpos = Xpos;
     this.Ypos = Ypos;
@@ -187,36 +187,36 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   /**
-   * Creates a new EntityGaze RecordBuilder.
-   * @return A new EntityGaze RecordBuilder
+   * Creates a new AvroGaze RecordBuilder.
+   * @return A new AvroGaze RecordBuilder
    */
-  public static magicalpipelines.model.EntityGaze.Builder newBuilder() {
-    return new magicalpipelines.model.EntityGaze.Builder();
+  public static magicalpipelines.model.AvroGaze.Builder newBuilder() {
+    return new magicalpipelines.model.AvroGaze.Builder();
   }
 
   /**
-   * Creates a new EntityGaze RecordBuilder by copying an existing Builder.
+   * Creates a new AvroGaze RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new EntityGaze RecordBuilder
+   * @return A new AvroGaze RecordBuilder
    */
-  public static magicalpipelines.model.EntityGaze.Builder newBuilder(magicalpipelines.model.EntityGaze.Builder other) {
-    return new magicalpipelines.model.EntityGaze.Builder(other);
+  public static magicalpipelines.model.AvroGaze.Builder newBuilder(magicalpipelines.model.AvroGaze.Builder other) {
+    return new magicalpipelines.model.AvroGaze.Builder(other);
   }
 
   /**
-   * Creates a new EntityGaze RecordBuilder by copying an existing EntityGaze instance.
+   * Creates a new AvroGaze RecordBuilder by copying an existing AvroGaze instance.
    * @param other The existing instance to copy.
-   * @return A new EntityGaze RecordBuilder
+   * @return A new AvroGaze RecordBuilder
    */
-  public static magicalpipelines.model.EntityGaze.Builder newBuilder(magicalpipelines.model.EntityGaze other) {
-    return new magicalpipelines.model.EntityGaze.Builder(other);
+  public static magicalpipelines.model.AvroGaze.Builder newBuilder(magicalpipelines.model.AvroGaze other) {
+    return new magicalpipelines.model.AvroGaze.Builder(other);
   }
 
   /**
-   * RecordBuilder for EntityGaze instances.
+   * RecordBuilder for AvroGaze instances.
    */
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<EntityGaze>
-    implements org.apache.avro.data.RecordBuilder<EntityGaze> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<AvroGaze>
+    implements org.apache.avro.data.RecordBuilder<AvroGaze> {
 
     private long Timestamp;
     private double Xpos;
@@ -233,7 +233,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(magicalpipelines.model.EntityGaze.Builder other) {
+    private Builder(magicalpipelines.model.AvroGaze.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.Timestamp)) {
         this.Timestamp = data().deepCopy(fields()[0].schema(), other.Timestamp);
@@ -258,10 +258,10 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
     }
 
     /**
-     * Creates a Builder by copying an existing EntityGaze instance
+     * Creates a Builder by copying an existing AvroGaze instance
      * @param other The existing instance to copy.
      */
-    private Builder(magicalpipelines.model.EntityGaze other) {
+    private Builder(magicalpipelines.model.AvroGaze other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.Timestamp)) {
         this.Timestamp = data().deepCopy(fields()[0].schema(), other.Timestamp);
@@ -298,7 +298,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'Timestamp'.
       * @return This builder.
       */
-    public magicalpipelines.model.EntityGaze.Builder setTimestamp(long value) {
+    public magicalpipelines.model.AvroGaze.Builder setTimestamp(long value) {
       validate(fields()[0], value);
       this.Timestamp = value;
       fieldSetFlags()[0] = true;
@@ -318,7 +318,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
       * Clears the value of the 'Timestamp' field.
       * @return This builder.
       */
-    public magicalpipelines.model.EntityGaze.Builder clearTimestamp() {
+    public magicalpipelines.model.AvroGaze.Builder clearTimestamp() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -336,7 +336,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'Xpos'.
       * @return This builder.
       */
-    public magicalpipelines.model.EntityGaze.Builder setXpos(double value) {
+    public magicalpipelines.model.AvroGaze.Builder setXpos(double value) {
       validate(fields()[1], value);
       this.Xpos = value;
       fieldSetFlags()[1] = true;
@@ -356,7 +356,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
       * Clears the value of the 'Xpos' field.
       * @return This builder.
       */
-    public magicalpipelines.model.EntityGaze.Builder clearXpos() {
+    public magicalpipelines.model.AvroGaze.Builder clearXpos() {
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -374,7 +374,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'Ypos'.
       * @return This builder.
       */
-    public magicalpipelines.model.EntityGaze.Builder setYpos(double value) {
+    public magicalpipelines.model.AvroGaze.Builder setYpos(double value) {
       validate(fields()[2], value);
       this.Ypos = value;
       fieldSetFlags()[2] = true;
@@ -394,7 +394,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
       * Clears the value of the 'Ypos' field.
       * @return This builder.
       */
-    public magicalpipelines.model.EntityGaze.Builder clearYpos() {
+    public magicalpipelines.model.AvroGaze.Builder clearYpos() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -412,7 +412,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'PupilSize'.
       * @return This builder.
       */
-    public magicalpipelines.model.EntityGaze.Builder setPupilSize(double value) {
+    public magicalpipelines.model.AvroGaze.Builder setPupilSize(double value) {
       validate(fields()[3], value);
       this.PupilSize = value;
       fieldSetFlags()[3] = true;
@@ -432,7 +432,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
       * Clears the value of the 'PupilSize' field.
       * @return This builder.
       */
-    public magicalpipelines.model.EntityGaze.Builder clearPupilSize() {
+    public magicalpipelines.model.AvroGaze.Builder clearPupilSize() {
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -450,7 +450,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'AOI'.
       * @return This builder.
       */
-    public magicalpipelines.model.EntityGaze.Builder setAOI(java.lang.CharSequence value) {
+    public magicalpipelines.model.AvroGaze.Builder setAOI(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.AOI = value;
       fieldSetFlags()[4] = true;
@@ -470,7 +470,7 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
       * Clears the value of the 'AOI' field.
       * @return This builder.
       */
-    public magicalpipelines.model.EntityGaze.Builder clearAOI() {
+    public magicalpipelines.model.AvroGaze.Builder clearAOI() {
       AOI = null;
       fieldSetFlags()[4] = false;
       return this;
@@ -478,9 +478,9 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
 
     @Override
     @SuppressWarnings("unchecked")
-    public EntityGaze build() {
+    public AvroGaze build() {
       try {
-        EntityGaze record = new EntityGaze();
+        AvroGaze record = new AvroGaze();
         record.Timestamp = fieldSetFlags()[0] ? this.Timestamp : (java.lang.Long) defaultValue(fields()[0]);
         record.Xpos = fieldSetFlags()[1] ? this.Xpos : (java.lang.Double) defaultValue(fields()[1]);
         record.Ypos = fieldSetFlags()[2] ? this.Ypos : (java.lang.Double) defaultValue(fields()[2]);
@@ -494,8 +494,8 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<EntityGaze>
-    WRITER$ = (org.apache.avro.io.DatumWriter<EntityGaze>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<AvroGaze>
+    WRITER$ = (org.apache.avro.io.DatumWriter<AvroGaze>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -503,8 +503,8 @@ public class EntityGaze extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<EntityGaze>
-    READER$ = (org.apache.avro.io.DatumReader<EntityGaze>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<AvroGaze>
+    READER$ = (org.apache.avro.io.DatumReader<AvroGaze>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {

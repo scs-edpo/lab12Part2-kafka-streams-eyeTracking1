@@ -1,9 +1,5 @@
 package magicalpipelines.topology;
 
-import magicalpipelines.model.EntityGaze;
-
-import magicalpipelines.language.ETClient;
-import magicalpipelines.language.LanguageClient;
 import magicalpipelines.partitioner.CustomPartitioner;
 import magicalpipelines.serialization.Gaze;
 import magicalpipelines.serialization.avro.AvroSerdes;
@@ -12,22 +8,15 @@ import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.*;
+import magicalpipelines.model.AvroGaze;
 
-import magicalpipelines.utils.Utils;
-
-import java.util.Arrays;
-import java.util.List;
+import static magicalpipelines.gazeprocessing.Processor.calculateAverageLeftRightReading;
+import static magicalpipelines.gazeprocessing.Processor.findAOI;
 
 public class EyeTrackingTopology {
-  private static final List<String> currencies = Arrays.asList("bitcoin", "ethereum");
+
 
   public static Topology build() {
-
-    return build(new ETClient());
-  }
-
-
-  public static Topology build(LanguageClient languageClient) {
 
     // the builder is used to construct the topology
     StreamsBuilder builder = new StreamsBuilder();
@@ -75,10 +64,10 @@ public class EyeTrackingTopology {
                   (gaze) -> {
                       Gaze eventFilteredGaze = new Gaze();
                       eventFilteredGaze.setTimestamp(gaze.getTimestamp());
-                      eventFilteredGaze.setPupilSize((gaze.getPupilSizeLeft()+gaze.getPupilSizeRight())/2);
-                      eventFilteredGaze.setXpos((gaze.getXposLeft()+gaze.getXposRight())/2);
-                      eventFilteredGaze.setYpos((gaze.getYposLeft()+gaze.getYposRight())/2);
-                      eventFilteredGaze.setAoi(Utils.findAOI(eventFilteredGaze.getXpos(),eventFilteredGaze.getYpos()));
+                      eventFilteredGaze.setPupilSize(calculateAverageLeftRightReading(gaze.getPupilSizeLeft(),gaze.getPupilSizeRight()));
+                      eventFilteredGaze.setXpos(calculateAverageLeftRightReading(gaze.getXposLeft(),gaze.getXposRight()));
+                      eventFilteredGaze.setYpos(calculateAverageLeftRightReading(gaze.getYposLeft(),gaze.getYposRight()));
+                      eventFilteredGaze.setAoi(findAOI(eventFilteredGaze.getXpos(),eventFilteredGaze.getYpos()));
                       return eventFilteredGaze;
                       });
 
@@ -93,19 +82,26 @@ public class EyeTrackingTopology {
     // Route gazeBranches to different partitions of the same topic and process them
           for (int i = 0; i < gazeBranches.length; i++) {
 
-              // select branch
+              // Select branch
               KStream<byte[], Gaze> branch = gazeBranches[i];
 
-              // Process the data in the branch (e.g., using languageClient.getEntityGaze)
-              KStream<byte[], EntityGaze> dataToStream = branch.flatMapValues(
+              // Transform Gaze objects to AvroGaze objects
+              KStream<byte[], AvroGaze> dataToStream = branch.mapValues(
                       (gaze) -> {
-                          List<EntityGaze> results = languageClient.getEntityGaze(gaze);
-                          return results;
+                          AvroGaze avroGaze =
+                                  AvroGaze.newBuilder()
+                                          .setTimestamp(gaze.getTimestamp())
+                                          .setXpos(gaze.getXpos())
+                                          .setYpos(gaze.getYpos())
+                                          .setPupilSize(gaze.getPupilSize())
+                                          .setAOI(gaze.getAoi())
+                                          .build();
+                          return avroGaze;
                       });
 
               // Create a new key based on the partitioning condition
               int fi = i;
-              KStream<String, EntityGaze> keyedStream = dataToStream.selectKey((key, value) -> {
+              KStream<String, AvroGaze> keyedStream = dataToStream.selectKey((key, value) -> {
                   if (fi==0) {
                       return "low CL";
                   } else {
@@ -118,7 +114,7 @@ public class EyeTrackingTopology {
                           "gazes-out",
                           Produced.with(
                                   Serdes.String(),
-                                  AvroSerdes.EntityGaze("http://localhost:8081", false),
+                                  AvroSerdes.avroGaze("http://localhost:8081", false),
                                   new CustomPartitioner()));
           }
 

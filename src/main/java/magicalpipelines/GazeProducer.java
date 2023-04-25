@@ -4,8 +4,6 @@ import java.io.InputStream;
 import java.util.*;
 
 import com.google.common.io.Resources;
-import magicalpipelines.model.EntityGaze;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.*;
 import org.json.simple.JSONObject;
 

@@ -39,8 +39,8 @@ public class Gaze {
 
 
   // attributes after event translation
-  int xpos;
-  int ypos;
+  double xpos;
+  double ypos;
   double pupilSize;
   String aoi;
 
@@ -174,19 +174,19 @@ public class Gaze {
     this.systemMemory = systemMemory;
   }
 
-  public int getXpos() {
+  public double getXpos() {
     return xpos;
   }
 
-  public void setXpos(int xpos) {
+  public void setXpos(double xpos) {
     this.xpos = xpos;
   }
 
-  public int getYpos() {
+  public double getYpos() {
     return ypos;
   }
 
-  public void setYpos(int ypos) {
+  public void setYpos(double ypos) {
     this.ypos = ypos;
   }
 
