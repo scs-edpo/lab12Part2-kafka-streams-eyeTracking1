@@ -79,7 +79,7 @@ public class EyeTrackingTopology {
               (k, gaze) -> gaze.getPupilSize() < pupilSizeThreshold,
               (k, gaze) -> gaze.getPupilSize() >= pupilSizeThreshold);
 
-    // Route gazeBranches to different partitions of the same topic and process them
+        // Route gazeBranches to different partitions of the same topic and process them
           for (int i = 0; i < gazeBranches.length; i++) {
 
               // Select branch
