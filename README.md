@@ -1,4 +1,4 @@
-# lab12-kafka-streams-eyeTracking1
+# lab12Part2-kafka-streams-eyeTracking1
 
 This lab simulates the generation, processing, and consumption of gaze data. 
 The gaze data contains information about the position of the eyes and the size of the pupils. 
