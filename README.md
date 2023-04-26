@@ -2,7 +2,7 @@
 
 This lab simulates the generation, processing, and consumption of gaze data. 
 The gaze data contains information about the position of the eyes and the size of the pupils. 
-The project consists of three main components: a gaze producer, an event processing topology, and a gaze consumer. 
+The project consists of three main components: a **gaze producer**, an **event processing topology**, and a **gaze consumer**. 
 
 The lab is based on https://github.com/scs-edpo/lab12Part1-kafka-streams-cryptosentiment. 
 Only the new concepts are introduced.
@@ -30,7 +30,7 @@ The [GazeProducer](/src/main/java/magicalpipelines/GazeProducer.java) class is m
 
 ### Topology
 
-The steps of the topology (2-5) are illustrated in the following [PDF file](doc/eventsProcessingPipeline.pdf).
+The steps of the topology (2-5) are illustrated in the following [PDF file](doc/topology.pdf).
 
 ### Control-flow Summary
 
