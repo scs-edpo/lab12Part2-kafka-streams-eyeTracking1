@@ -38,13 +38,6 @@ public class Gaze {
   double systemMemory;
 
 
-  // attributes after event translation
-  double xpos;
-  double ypos;
-  double pupilSize;
-  String aoi;
-
-
 
   public long getTimestamp() {
     return timestamp;
@@ -174,35 +167,5 @@ public class Gaze {
     this.systemMemory = systemMemory;
   }
 
-  public double getXpos() {
-    return xpos;
-  }
 
-  public void setXpos(double xpos) {
-    this.xpos = xpos;
-  }
-
-  public double getYpos() {
-    return ypos;
-  }
-
-  public void setYpos(double ypos) {
-    this.ypos = ypos;
-  }
-
-  public double getPupilSize() {
-    return pupilSize;
-  }
-
-  public void setPupilSize(double pupilSize) {
-    this.pupilSize = pupilSize;
-  }
-
-  public String getAoi() {
-    return aoi;
-  }
-
-  public void setAoi(String aoi) {
-    this.aoi = aoi;
-  }
 }

@@ -1,5 +1,6 @@
 package magicalpipelines.topology;
 
+import magicalpipelines.model.TranslatedGaze;
 import magicalpipelines.partitioner.CustomPartitioner;
 import magicalpipelines.serialization.Gaze;
 import magicalpipelines.serialization.avro.AvroSerdes;
@@ -8,7 +9,6 @@ import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.*;
-import magicalpipelines.model.AvroGaze;
 
 import static magicalpipelines.gazeprocessing.Processor.calculateAverageLeftRightReading;
 import static magicalpipelines.gazeprocessing.Processor.findAOI;
@@ -59,23 +59,32 @@ public class EyeTrackingTopology {
       // compute ypos from yposLeft and yposRight
       // compute pupilSize from pupilSizeLeft and pupilSizeRight
       // find AOI based on xpos and ypos
-      KStream<byte[], Gaze> eventTranslatedGazes =
+      KStream<byte[], TranslatedGaze> eventTranslatedGazes =
               eventFilteredGazes.mapValues(
                   (gaze) -> {
-                      Gaze eventFilteredGaze = new Gaze();
-                      eventFilteredGaze.setTimestamp(gaze.getTimestamp());
-                      eventFilteredGaze.setPupilSize(calculateAverageLeftRightReading(gaze.getPupilSizeLeft(),gaze.getPupilSizeRight()));
-                      eventFilteredGaze.setXpos(calculateAverageLeftRightReading(gaze.getXposLeft(),gaze.getXposRight()));
-                      eventFilteredGaze.setYpos(calculateAverageLeftRightReading(gaze.getYposLeft(),gaze.getYposRight()));
-                      eventFilteredGaze.setAoi(findAOI(eventFilteredGaze.getXpos(),eventFilteredGaze.getYpos()));
-                      return eventFilteredGaze;
+
+                      double xPos = calculateAverageLeftRightReading(gaze.getXposLeft(),gaze.getXposRight());
+                      double yPos = calculateAverageLeftRightReading(gaze.getYposLeft(),gaze.getYposRight());
+                      double pupilSize = calculateAverageLeftRightReading(gaze.getPupilSizeLeft(),gaze.getPupilSizeRight());
+                      String aoi = findAOI(xPos,yPos);
+
+                      TranslatedGaze translatedGaze =
+                              TranslatedGaze.newBuilder()
+                                      .setTimestamp(gaze.getTimestamp())
+                                      .setXpos(xPos)
+                                      .setYpos(yPos)
+                                      .setPupilSize(pupilSize)
+                                      .setAOI(aoi)
+                                      .build();
+
+                      return translatedGaze;
                       });
 
       // Apply event router
       // For sake of simulation divide gazes into two gazeBranches based on pupilSizeThreshold
       // gazes with pupil size less than pupilSizeThreshold are assumed to reflect low cognitive load, while the other gazes are assumed to reflect high cognitive load
       double pupilSizeThreshold = 3.15;
-      KStream<byte[], Gaze>[] gazeBranches = eventTranslatedGazes.branch(
+      KStream<byte[], TranslatedGaze>[] gazeBranches = eventTranslatedGazes.branch(
               (k, gaze) -> gaze.getPupilSize() < pupilSizeThreshold,
               (k, gaze) -> gaze.getPupilSize() >= pupilSizeThreshold);
 
@@ -83,25 +92,11 @@ public class EyeTrackingTopology {
           for (int i = 0; i < gazeBranches.length; i++) {
 
               // Select branch
-              KStream<byte[], Gaze> branch = gazeBranches[i];
-
-              // Transform Gaze objects to AvroGaze objects
-              KStream<byte[], AvroGaze> dataToStream = branch.mapValues(
-                      (gaze) -> {
-                          AvroGaze avroGaze =
-                                  AvroGaze.newBuilder()
-                                          .setTimestamp(gaze.getTimestamp())
-                                          .setXpos(gaze.getXpos())
-                                          .setYpos(gaze.getYpos())
-                                          .setPupilSize(gaze.getPupilSize())
-                                          .setAOI(gaze.getAoi())
-                                          .build();
-                          return avroGaze;
-                      });
+              KStream<byte[], TranslatedGaze> branch = gazeBranches[i];
 
               // Create a new key based on the partitioning condition
               int fi = i;
-              KStream<String, AvroGaze> keyedStream = dataToStream.selectKey((key, value) -> {
+              KStream<String, TranslatedGaze> keyedStream = branch.selectKey((key, value) -> {
                   if (fi==0) {
                       return "low CL";
                   } else {

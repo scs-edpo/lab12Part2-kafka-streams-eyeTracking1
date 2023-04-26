@@ -1,6 +1,6 @@
 {
     "namespace": "magicalpipelines.model",
-    "name": "AvroGaze",
+    "name": "TranslatedGaze",
     "type": "record",
     "fields": [
       {
