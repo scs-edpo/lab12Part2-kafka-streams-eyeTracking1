@@ -51,7 +51,7 @@ The steps of the topology (2-5) are illustrated in the following [PDF file](doc/
 
 6. **Key Selection**: A new key is created for each processed gaze event based on the routing condition in Step 5 (low or high cognitive load).
 
-7. **Output Topic**: The gaze data is written to the "gazes-out" Kafka topic using the Avro Serde with Schema Registry. `CustomPartitioner` ensures that the gaze events are sent into different partitions based on their key (defined in Step 7).
+7. **Output Topic**: The gaze data is written to the "gazes-out" Kafka topic using the Avro Serde with Schema Registry. `CustomPartitioner` ensures that the gaze events are sent into different partitions based on their key (defined in Step 6).
 
 ## Consuming events
 
