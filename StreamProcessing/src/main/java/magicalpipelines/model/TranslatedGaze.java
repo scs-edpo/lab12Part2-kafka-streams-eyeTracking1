@@ -5,10 +5,10 @@
  */
 package magicalpipelines.model;
 
-import org.apache.avro.specific.SpecificData;
-import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.SchemaStore;
+import org.apache.avro.specific.SpecificData;
 
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
@@ -55,7 +55,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
   @Deprecated public double Xpos;
   @Deprecated public double Ypos;
   @Deprecated public double PupilSize;
-  @Deprecated public java.lang.CharSequence AOI;
+  @Deprecated public CharSequence AOI;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -72,7 +72,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * @param PupilSize The new value for PupilSize
    * @param AOI The new value for AOI
    */
-  public TranslatedGaze(java.lang.Long Timestamp, java.lang.Double Xpos, java.lang.Double Ypos, java.lang.Double PupilSize, java.lang.CharSequence AOI) {
+  public TranslatedGaze(Long Timestamp, Double Xpos, Double Ypos, Double PupilSize, CharSequence AOI) {
     this.Timestamp = Timestamp;
     this.Xpos = Xpos;
     this.Ypos = Ypos;
@@ -82,7 +82,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
-  public java.lang.Object get(int field$) {
+  public Object get(int field$) {
     switch (field$) {
     case 0: return Timestamp;
     case 1: return Xpos;
@@ -95,13 +95,13 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
 
   // Used by DatumReader.  Applications should not call.
   @SuppressWarnings(value="unchecked")
-  public void put(int field$, java.lang.Object value$) {
+  public void put(int field$, Object value$) {
     switch (field$) {
-    case 0: Timestamp = (java.lang.Long)value$; break;
-    case 1: Xpos = (java.lang.Double)value$; break;
-    case 2: Ypos = (java.lang.Double)value$; break;
-    case 3: PupilSize = (java.lang.Double)value$; break;
-    case 4: AOI = (java.lang.CharSequence)value$; break;
+    case 0: Timestamp = (Long)value$; break;
+    case 1: Xpos = (Double)value$; break;
+    case 2: Ypos = (Double)value$; break;
+    case 3: PupilSize = (Double)value$; break;
+    case 4: AOI = (CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -110,7 +110,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * Gets the value of the 'Timestamp' field.
    * @return The value of the 'Timestamp' field.
    */
-  public java.lang.Long getTimestamp() {
+  public Long getTimestamp() {
     return Timestamp;
   }
 
@@ -118,7 +118,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * Sets the value of the 'Timestamp' field.
    * @param value the value to set.
    */
-  public void setTimestamp(java.lang.Long value) {
+  public void setTimestamp(Long value) {
     this.Timestamp = value;
   }
 
@@ -126,7 +126,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * Gets the value of the 'Xpos' field.
    * @return The value of the 'Xpos' field.
    */
-  public java.lang.Double getXpos() {
+  public Double getXpos() {
     return Xpos;
   }
 
@@ -134,7 +134,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * Sets the value of the 'Xpos' field.
    * @param value the value to set.
    */
-  public void setXpos(java.lang.Double value) {
+  public void setXpos(Double value) {
     this.Xpos = value;
   }
 
@@ -142,7 +142,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * Gets the value of the 'Ypos' field.
    * @return The value of the 'Ypos' field.
    */
-  public java.lang.Double getYpos() {
+  public Double getYpos() {
     return Ypos;
   }
 
@@ -150,7 +150,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * Sets the value of the 'Ypos' field.
    * @param value the value to set.
    */
-  public void setYpos(java.lang.Double value) {
+  public void setYpos(Double value) {
     this.Ypos = value;
   }
 
@@ -158,7 +158,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * Gets the value of the 'PupilSize' field.
    * @return The value of the 'PupilSize' field.
    */
-  public java.lang.Double getPupilSize() {
+  public Double getPupilSize() {
     return PupilSize;
   }
 
@@ -166,7 +166,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * Sets the value of the 'PupilSize' field.
    * @param value the value to set.
    */
-  public void setPupilSize(java.lang.Double value) {
+  public void setPupilSize(Double value) {
     this.PupilSize = value;
   }
 
@@ -174,7 +174,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * Gets the value of the 'AOI' field.
    * @return The value of the 'AOI' field.
    */
-  public java.lang.CharSequence getAOI() {
+  public CharSequence getAOI() {
     return AOI;
   }
 
@@ -182,7 +182,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * Sets the value of the 'AOI' field.
    * @param value the value to set.
    */
-  public void setAOI(java.lang.CharSequence value) {
+  public void setAOI(CharSequence value) {
     this.AOI = value;
   }
 
@@ -190,8 +190,8 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * Creates a new TranslatedGaze RecordBuilder.
    * @return A new TranslatedGaze RecordBuilder
    */
-  public static magicalpipelines.model.TranslatedGaze.Builder newBuilder() {
-    return new magicalpipelines.model.TranslatedGaze.Builder();
+  public static Builder newBuilder() {
+    return new Builder();
   }
 
   /**
@@ -199,8 +199,8 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * @param other The existing builder to copy.
    * @return A new TranslatedGaze RecordBuilder
    */
-  public static magicalpipelines.model.TranslatedGaze.Builder newBuilder(magicalpipelines.model.TranslatedGaze.Builder other) {
-    return new magicalpipelines.model.TranslatedGaze.Builder(other);
+  public static Builder newBuilder(Builder other) {
+    return new Builder(other);
   }
 
   /**
@@ -208,8 +208,8 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
    * @param other The existing instance to copy.
    * @return A new TranslatedGaze RecordBuilder
    */
-  public static magicalpipelines.model.TranslatedGaze.Builder newBuilder(magicalpipelines.model.TranslatedGaze other) {
-    return new magicalpipelines.model.TranslatedGaze.Builder(other);
+  public static Builder newBuilder(TranslatedGaze other) {
+    return new Builder(other);
   }
 
   /**
@@ -222,7 +222,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
     private double Xpos;
     private double Ypos;
     private double PupilSize;
-    private java.lang.CharSequence AOI;
+    private CharSequence AOI;
 
     /** Creates a new Builder */
     private Builder() {
@@ -233,7 +233,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(magicalpipelines.model.TranslatedGaze.Builder other) {
+    private Builder(Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.Timestamp)) {
         this.Timestamp = data().deepCopy(fields()[0].schema(), other.Timestamp);
@@ -261,7 +261,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
      * Creates a Builder by copying an existing TranslatedGaze instance
      * @param other The existing instance to copy.
      */
-    private Builder(magicalpipelines.model.TranslatedGaze other) {
+    private Builder(TranslatedGaze other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.Timestamp)) {
         this.Timestamp = data().deepCopy(fields()[0].schema(), other.Timestamp);
@@ -289,7 +289,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * Gets the value of the 'Timestamp' field.
       * @return The value.
       */
-    public java.lang.Long getTimestamp() {
+    public Long getTimestamp() {
       return Timestamp;
     }
 
@@ -298,7 +298,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'Timestamp'.
       * @return This builder.
       */
-    public magicalpipelines.model.TranslatedGaze.Builder setTimestamp(long value) {
+    public Builder setTimestamp(long value) {
       validate(fields()[0], value);
       this.Timestamp = value;
       fieldSetFlags()[0] = true;
@@ -318,7 +318,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * Clears the value of the 'Timestamp' field.
       * @return This builder.
       */
-    public magicalpipelines.model.TranslatedGaze.Builder clearTimestamp() {
+    public Builder clearTimestamp() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -327,7 +327,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * Gets the value of the 'Xpos' field.
       * @return The value.
       */
-    public java.lang.Double getXpos() {
+    public Double getXpos() {
       return Xpos;
     }
 
@@ -336,7 +336,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'Xpos'.
       * @return This builder.
       */
-    public magicalpipelines.model.TranslatedGaze.Builder setXpos(double value) {
+    public Builder setXpos(double value) {
       validate(fields()[1], value);
       this.Xpos = value;
       fieldSetFlags()[1] = true;
@@ -356,7 +356,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * Clears the value of the 'Xpos' field.
       * @return This builder.
       */
-    public magicalpipelines.model.TranslatedGaze.Builder clearXpos() {
+    public Builder clearXpos() {
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -365,7 +365,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * Gets the value of the 'Ypos' field.
       * @return The value.
       */
-    public java.lang.Double getYpos() {
+    public Double getYpos() {
       return Ypos;
     }
 
@@ -374,7 +374,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'Ypos'.
       * @return This builder.
       */
-    public magicalpipelines.model.TranslatedGaze.Builder setYpos(double value) {
+    public Builder setYpos(double value) {
       validate(fields()[2], value);
       this.Ypos = value;
       fieldSetFlags()[2] = true;
@@ -394,7 +394,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * Clears the value of the 'Ypos' field.
       * @return This builder.
       */
-    public magicalpipelines.model.TranslatedGaze.Builder clearYpos() {
+    public Builder clearYpos() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -403,7 +403,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * Gets the value of the 'PupilSize' field.
       * @return The value.
       */
-    public java.lang.Double getPupilSize() {
+    public Double getPupilSize() {
       return PupilSize;
     }
 
@@ -412,7 +412,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'PupilSize'.
       * @return This builder.
       */
-    public magicalpipelines.model.TranslatedGaze.Builder setPupilSize(double value) {
+    public Builder setPupilSize(double value) {
       validate(fields()[3], value);
       this.PupilSize = value;
       fieldSetFlags()[3] = true;
@@ -432,7 +432,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * Clears the value of the 'PupilSize' field.
       * @return This builder.
       */
-    public magicalpipelines.model.TranslatedGaze.Builder clearPupilSize() {
+    public Builder clearPupilSize() {
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -441,7 +441,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * Gets the value of the 'AOI' field.
       * @return The value.
       */
-    public java.lang.CharSequence getAOI() {
+    public CharSequence getAOI() {
       return AOI;
     }
 
@@ -450,7 +450,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'AOI'.
       * @return This builder.
       */
-    public magicalpipelines.model.TranslatedGaze.Builder setAOI(java.lang.CharSequence value) {
+    public Builder setAOI(CharSequence value) {
       validate(fields()[4], value);
       this.AOI = value;
       fieldSetFlags()[4] = true;
@@ -470,7 +470,7 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
       * Clears the value of the 'AOI' field.
       * @return This builder.
       */
-    public magicalpipelines.model.TranslatedGaze.Builder clearAOI() {
+    public Builder clearAOI() {
       AOI = null;
       fieldSetFlags()[4] = false;
       return this;
@@ -481,13 +481,13 @@ public class TranslatedGaze extends org.apache.avro.specific.SpecificRecordBase 
     public TranslatedGaze build() {
       try {
         TranslatedGaze record = new TranslatedGaze();
-        record.Timestamp = fieldSetFlags()[0] ? this.Timestamp : (java.lang.Long) defaultValue(fields()[0]);
-        record.Xpos = fieldSetFlags()[1] ? this.Xpos : (java.lang.Double) defaultValue(fields()[1]);
-        record.Ypos = fieldSetFlags()[2] ? this.Ypos : (java.lang.Double) defaultValue(fields()[2]);
-        record.PupilSize = fieldSetFlags()[3] ? this.PupilSize : (java.lang.Double) defaultValue(fields()[3]);
-        record.AOI = fieldSetFlags()[4] ? this.AOI : (java.lang.CharSequence) defaultValue(fields()[4]);
+        record.Timestamp = fieldSetFlags()[0] ? this.Timestamp : (Long) defaultValue(fields()[0]);
+        record.Xpos = fieldSetFlags()[1] ? this.Xpos : (Double) defaultValue(fields()[1]);
+        record.Ypos = fieldSetFlags()[2] ? this.Ypos : (Double) defaultValue(fields()[2]);
+        record.PupilSize = fieldSetFlags()[3] ? this.PupilSize : (Double) defaultValue(fields()[3]);
+        record.AOI = fieldSetFlags()[4] ? this.AOI : (CharSequence) defaultValue(fields()[4]);
         return record;
-      } catch (java.lang.Exception e) {
+      } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
     }
