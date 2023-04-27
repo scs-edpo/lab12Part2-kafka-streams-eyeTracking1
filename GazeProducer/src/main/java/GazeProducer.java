@@ -1,11 +1,11 @@
-package magicalpipelines;
+import com.google.common.io.Resources;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.json.simple.JSONObject;
 
 import java.io.InputStream;
-import java.util.*;
-
-import com.google.common.io.Resources;
-import org.apache.kafka.clients.producer.*;
-import org.json.simple.JSONObject;
+import java.util.Properties;
+import java.util.Random;
 
 
 public class GazeProducer {

@@ -11,14 +11,14 @@ Only the new concepts are introduced.
 
 1. Open a terminal/command prompt and navigate to the project's root directory.
 2. Run `docker-compose up` to start the Kafka broker, Zookeeper, and the schema registry.
-3. Run the [EventProcessingApp](/src/main/java/magicalpipelines/EventProcessingApp.java)  to process the gaze data and apply various filters and transformations.
-4. Run the [GazeConsumer](/src/main/java/magicalpipelines/GazeConsumer.java) to consume the processed gaze data.
-5. In IntelliJ, run the [GazeProducer](/src/main/java/magicalpipelines/GazeProducer.java) to start generating gaze data.
+3. Run the [EventProcessingApp](StreamProcessing/src/main/java/magicalpipelines/EventProcessingApp.java)  to process the gaze data and apply various filters and transformations.
+4. Run the [GazeConsumer](GazeConsumer/src/main/java/GazeConsumer.java) to consume the processed gaze data.
+5. run the [GazeProducer](GazeProducer/src/main/java/GazeProducer.java) to start generating gaze data.
 
 
 ## Producing events
 
-The [GazeProducer](/src/main/java/magicalpipelines/GazeProducer.java) class is meant for generating random gaze events and sending them to a Kafka topic. The main steps in this class are:
+The [GazeProducer](GazeProducer/src/main/java/GazeProducer.java) class is meant for generating random gaze events and sending them to a Kafka topic. The main steps in this class are:
 
 1. Initialize Kafka producer with properties from the `producer.properties` file.
 2. Generate random gaze events using the `generateRandomGaze()` method.
@@ -26,7 +26,7 @@ The [GazeProducer](/src/main/java/magicalpipelines/GazeProducer.java) class is m
 
 ## Events processing
 
-[EventProcessingApp](/src/main/java/magicalpipelines/EventProcessingApp.java) uses the [EyeTrackingTopology](/src/main/java/magicalpipelines/topology/EyeTrackingTopology.java) class which  is meant for processing raw gaze data by filtering, transforming, and routing the data through a series of operations.
+[EventProcessingApp](StreamProcessing/src/main/java/magicalpipelines/EventProcessingApp.java) uses the [EyeTrackingTopology](StreamProcessing/src/main/java/magicalpipelines/topology/EyeTrackingTopology.java) class which  is meant for processing raw gaze data by filtering, transforming, and routing the data through a series of operations.
 
 ### Topology
 
@@ -41,9 +41,9 @@ The steps of the topology (2-5) are illustrated in the following [PDF file](doc/
 3. **Event Filtering**: The event filtering step removes gazes with invalid gaze or pupil size data by checking the `ValidGazeLeft`, `ValidGazeRight`, `ValidPupilSizeLeft`, and `ValidPupilSizeRight` fields. The resulting stream is called `eventFilteredGazes`.
 
 4. **Event Translation**: In this step, gaze data is transformed by:
-    - Calculating the average x and y gaze positions based on the left and right gaze points using the `calculateAverageLeftRightReading(double leftValue, double rightValue)` method in [Processor](/src/main/java/magicalpipelines/gazeprocessing/Processor.java).
-    - Calculating the average pupil size based on the left and right pupil sizes using the `calculateAverageLeftRightReading(double leftValue, double rightValue)` method in [Processor](/src/main/java/magicalpipelines/gazeprocessing/Processor.java).
-    - Determining the Area of Interest (AOI) using the `findAOI(double xPos, double yPos)` method in [Processor](/src/main/java/magicalpipelines/gazeprocessing/Processor.java).
+    - Calculating the average x and y gaze positions based on the left and right gaze points using the `calculateAverageLeftRightReading(double leftValue, double rightValue)` method in [Processor](StreamProcessing/src/main/java/magicalpipelines/gazeprocessing/Processor.java).
+    - Calculating the average pupil size based on the left and right pupil sizes using the `calculateAverageLeftRightReading(double leftValue, double rightValue)` method in [Processor](StreamProcessing/src/main/java/magicalpipelines/gazeprocessing/Processor.java).
+    - Determining the Area of Interest (AOI) using the `findAOI(double xPos, double yPos)` method in [Processor](StreamProcessing/src/main/java/magicalpipelines/gazeprocessing/Processor.java).
 
    The new stream with these computed attributes is called `eventTranslatedGazes`.
 
@@ -55,7 +55,7 @@ The steps of the topology (2-5) are illustrated in the following [PDF file](doc/
 
 ## Consuming events
 
-The [GazeConsumer](/src/main/java/magicalpipelines/GazeConsumer.java)  class is meant for consuming the processed gaze events from a Kafka topic. The main steps in this class are:
+The [GazeConsumer](GazeConsumer/src/main/java/GazeConsumer.java)  class is meant for consuming the processed gaze events from a Kafka topic. The main steps in this class are:
 
 1. Initialize Kafka consumer with properties from the `consumer.properties` file.
 2. Subscribe to the "gazes-out" Kafka topic.
