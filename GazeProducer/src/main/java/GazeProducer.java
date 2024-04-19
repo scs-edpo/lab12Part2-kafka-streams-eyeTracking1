@@ -1,7 +1,8 @@
 import com.google.common.io.Resources;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
+
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -30,7 +31,7 @@ public class GazeProducer {
 
             JSONObject gaze =  generateRandomGaze();
             byte[] key = null;
-            String value = gaze.toJSONString();
+            String value = gaze.toString();
             System.out.println("Producing - "+value);
             ProducerRecord<byte[], String> record = new ProducerRecord<>(TOPIC_NAME, key, value);
             producer.send(record);
