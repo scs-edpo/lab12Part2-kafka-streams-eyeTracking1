@@ -10,7 +10,7 @@ Only the new concepts are introduced.
 ## Running the Project
 
 1. Open a terminal/command prompt and navigate to the project's root directory.
-2. Run `docker-compose up` to start the Kafka broker, Zookeeper, and the schema registry.
+2. Run `docker compose up` to start the Kafka broker, Zookeeper, and the schema registry.
 3. Run the [EventProcessingApp](StreamProcessing/src/main/java/magicalpipelines/EventProcessingApp.java)  to process the gaze data and apply various filters and transformations.
 4. Run the [GazeConsumer](GazeConsumer/src/main/java/GazeConsumer.java) to consume the processed gaze data.
 5. run the [GazeProducer](GazeProducer/src/main/java/GazeProducer.java) to start generating gaze data.
